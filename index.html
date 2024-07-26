@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="PageContainer"> 
+    <div class="Top"> 
+        <div class="HeaderContainer">
+            <div class="Temp">
+                <div class="celsius selected">°C</div>
+                <div class="farenhit notselected">°F</div>
+            </div>
+            <div class="TitleContainer"> 
+                <div class="Title">MyWeather.com</div>
+            </div>
+            <img src="Sun.svg">
+        </div>
+        <div class="SearchContainer">
+            <input placeholder="Enter city name">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <div class="Middle">
+        <div class="MiddleContainer">
+            <div class="LeftSideContainer">
+                <h1 class="LocationName">London, United Kingdom</h1>
+                <div>Patchy rain nearby</div>
+                <img src="PatchyRain.png" width="100px">
+                <h1>20.8°C</h1>
+                <div class="Humidity">
+                    <div>Humidity</div>
+                    <div class="HumidityNumber">49%</div>
+                </div>
+                <div class="WindSpeed">
+                    <div>Wind Speed</div>
+                    <div class="WindSpeedNumber">13.3 kph</div>
+                </div>
+                <div class="HeatIndex">
+                    <div>Heat Index</div>
+                    <div class="HeatIndexNumber">20.8 °C</div>
+                </div>
+
+            </div>
+
+            <div class="RightSideContainer">
+                <h1 class="forecastTitle">Week Forceast</h1>
+                <div class="BoxesContainer">
+                    <div class="firstBox">
+                        <div>Saturday,July 27</div>
+                        <div>Sunny</div>
+                        <img src="sun.png" width="50px">
+                        <h1>18.3°C</h1>
+                        <div class="Rain">
+                            <div>Chances of Rain</div>
+                            <div class="RainNumber">0%</div>
+                        </div>
+                    </div>
+                    <div class="firstBox">
+                        <div>Saturday,July 27</div>
+                        <div>Sunny</div>
+                        <img src="sun.png" width="50px">
+                        <h1>18.3°C</h1>
+                        <div class="Rain">
+                            <div>Chances of Rain</div>
+                            <div class="RainNumber">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+ 
+<script src="index.js"></script>
+</body>
+</html>

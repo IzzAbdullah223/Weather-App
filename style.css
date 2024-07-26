@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body{
+    background-color: #212529;
+    color: #dee2e6;
+}
+
+.PageContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+   
+}
+
+.HeaderContainer{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.HeaderContainer img{
+    min-width: 2%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+
+.Temp{
+    display: flex;
+    gap: 10px;
+}
+
+.celsius , .farenhit{
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.celsius:hover, .farenhit:hover{
+    color: #7d9ed3;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 2px;
+}
+
+.selected{
+    color:  #dee2e6;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 2px;
+
+}
+
+.notselected{
+    color: #5f92e6;
+}
+
+.Title{
+    font-size: 2.2rem;
+}
+
+.SearchContainer{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  
+}
+
+.SearchContainer input{
+    background-color: #212529;
+    padding: 8px 15px;
+    border: 1px solid;
+    border-color: #9ca1a536;
+    border-radius: 5px;
+    color: white;
+    transition: 0.5s;
+}
+
+.SearchContainer input:focus{
+    outline: 1px  solid #86b7fe;
+    box-shadow: 0px 0px 10px  rgba(27, 68, 204, 0.562);
+}
+
+.SearchContainer button{
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    padding: 0px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.SearchContainer button:hover{
+    background-color: #0d6dfdc5;
+
+}
+
+.MiddleContainer{
+    display: flex;
+justify-content: space-evenly;
+}
+
+.LeftSideContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 25%;
+    
+}
+
+.LeftSideContainer h1{
+    margin-bottom: 5px;
+}
+
+.LeftSideContainer h2{
+    margin-bottom: 5px;
+}
+
+.Humidity,.WindSpeed,.HeatIndex{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 4px;
+}
+
+.Humidity>div:first-child,.WindSpeed>div:first-child,.HeatIndex>div:first-child{
+    font-weight: bolder;
+    
+    color: rgba(255, 255, 255, 0.815);
+}
+
+.RightSideContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RightSideContainer>h1{
+    margin-bottom: 10px;
+}
+.BoxesContainer{
+ display: flex;
+    gap: 25px;
+    width: 180%;
+ 
+}
+
+.firstBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #cfd0d131;
+    padding: 20px 0px;
+    min-width: 48%;
+    border-radius: 8px;
+
+
+}
+
+
+
+.Rain{
+    display: flex;
+    gap: 25px;
+}
+
+.Rain>div:first-child{
+    font-weight: bold;
+}
+
+ 
