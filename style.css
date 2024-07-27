@@ -22,11 +22,12 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+  
    
 }
 
 .HeaderContainer img{
-    min-width: 2%;
+    width: 2%;
     cursor: pointer;
     margin-right: 10px;
 }
@@ -106,16 +107,18 @@ body{
 }
 
 .MiddleContainer{
-    display: flex;
+display: flex;
 justify-content: space-evenly;
+ 
 }
 
 .LeftSideContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 25%;
-    
+    margin-left: 200px;
+ 
+     
 }
 
 .LeftSideContainer h1{
@@ -124,6 +127,11 @@ justify-content: space-evenly;
 
 .LeftSideContainer h2{
     margin-bottom: 5px;
+}
+
+.LeftSideContainer img{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .Humidity,.WindSpeed,.HeatIndex{
@@ -150,8 +158,9 @@ justify-content: space-evenly;
 }
 .BoxesContainer{
  display: flex;
-    gap: 25px;
-    width: 180%;
+    gap: 25px;;
+    
+ 
  
 }
 
@@ -161,8 +170,7 @@ justify-content: space-evenly;
     align-items: center;
     gap: 15px;
     border: 1px solid #cfd0d131;
-    padding: 20px 0px;
-    min-width: 48%;
+    padding: 20px 50px;
     border-radius: 8px;
 
 
