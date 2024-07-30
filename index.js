@@ -318,14 +318,7 @@ function HourlyForeCast(Data){
         else{
             let temp=((Data.days[0].hours[date.getHours()+i].temp-32)*5/9).toFixed(1);
             document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
-        }
-
-
-
-     
-         
-       
-       
+        }    
      }
    
    
@@ -334,14 +327,97 @@ ImageForHourlyForecast(Data)
 
 
 function ImageForHourlyForecast(Data){
-    console.log(Data)
+    const date = new Date();
  
+     console.log(Data.days[0].hours[date.getHours()+1])
+     console.log(Data.days[0].hours[date.getHours()+1].icon)
+        
+
+     for(let i=1;i<=6;i++){
+        const Meridiem = date.getHours()+1>=12? "PM" : "AM";
+        switch(true){
+            case Data.days[0].hours[date.getHours()+i].icon==="Clear":
+                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoxImage${i}`).src==="./sun.png"
+                }
+             
+
+                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoximage${i}`).src==="./crescent-moon.png"
+                }
+
+                else if(Meridiem ==="PM"){
+                    document.querySelector(`smallBoxImage${i}`).src==="./sun.png"
+                }
+
+               else{
+                    document.querySelector(`smallBoxImage${i}`).src==="./crescent-moon.png";
+               }     
+               break;
 
 
 
-  
-    
+            case Data.days[0].hours[date.getHours()+i].icon==="Partially Cloudy":
+                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoxImage${i}`).src==="./PartiallyCloudy.png"
+                }
+             
 
+                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoximage${i}`).src==="./cloudy-night.png"
+                }
+
+                else if(Meridiem ==="PM"){
+                    document.querySelector(`smallBoxImage${i}`).src==="./PartiallyCloudy.png"
+                }
+
+               else{
+                    document.querySelector(`smallBoxImage${i}`).src==="./cloudy-night.png";
+               }     
+               break;
+               
+            case Data.days[0].hours[date.getHours()+i].icon==="Overcast":
+                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoxImage${i}`).src==="./overcast.png"
+                }
+             
+
+                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoximage${i}`).src==="./OvercastNight.png"
+                }
+
+                else if(Meridiem ==="PM"){
+                    document.querySelector(`smallBoxImage${i}`).src==="./overcast.png"
+                }
+
+               else{
+                    document.querySelector(`smallBoxImage${i}`).src==="./OvercastNight.png";
+               }     
+               break;
+
+            case Data.days[0].hours[date.getHours()+i].icon==="Rain, Partially cloudy":
+                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoxImage${i}`).src==="./PartialRain.png"
+                }
+             
+
+                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
+                    document.querySelector(`.smallBoximage${i}`).src==="./PartialRainNight.png"
+                }
+
+                else if(Meridiem ==="PM"){
+                    document.querySelector(`smallBoxImage${i}`).src==="./PartialRain.png"
+                }
+
+               else{
+                    document.querySelector(`smallBoxImage${i}`).src==="./PartialRain.png";
+               }     
+               break;
+
+            case Data.days[0].hours[date.getHours()+i].icon==="Rain, Overcast":
+                    document.querySelector(`smallBoxImage${i}`).src==="./OvercastRain.png"
+
+            
+        }
+     }
 }
- 
- 
