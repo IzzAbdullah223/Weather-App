@@ -14,17 +14,6 @@ const WindSpeed = document.querySelector(".WindSpeedNumber")
 
 const HeatIndex = document.querySelector(".HeatIndexNumber")
 
- 
-
-
- 
-
- 
-
- 
- 
- 
-
 const SearchBTN = document.querySelector("Button")
 
  SearchBTN.addEventListener("click", async ()=>{
@@ -36,6 +25,8 @@ const SearchBTN = document.querySelector("Button")
     weatherInfoRightFirstBox(Data);
 
     weatherInfoRightSecondBox(Data);
+
+    HourlyForeCast(Data)
 })
 
 async function getWeatherData(City){
@@ -51,7 +42,10 @@ async function getWeatherData(City){
 
 
 function WeatherInfoLeft(Data){
-    console.log(Data)
+    const date = new Date()
+
+     
+   
   
   placeName.textContent=Data.resolvedAddress
   weatherStatus.textContent=Data.currentConditions.conditions
@@ -61,7 +55,7 @@ function WeatherInfoLeft(Data){
   WindSpeed.textContent=Data.currentConditions.windspeed+"kph"
   HeatIndex.textContent=Data.currentConditions.uvindex+"°C"
 
-  document.querySelector(".leftImage").src=weatherImage(Data)
+  document.querySelector(".leftImage").src=weatherImage(Data,date)
 
 }
 
@@ -70,7 +64,7 @@ function weatherInfoRightFirstBox(Data){
     let Time =getDateForBoxes(date)
    document.querySelector(".firstBoxTitle").textContent=`${Time} ${date.getDate()}`
    document.querySelector(".firstBoxWeather").textContent=Data.days[1].conditions
-   document.querySelector(".firstBoxImage").src = firstBoxImage(Data)
+   document.querySelector(".firstBoxImage").src = firstBoxImage(Data,date)
    const farenhit=Data.days[1].temp
    document.querySelector(".firstBoxTemp").textContent=`${((farenhit-32)*5/9).toFixed(1)}°C`
    document.querySelector(".RainNumberBox1").textContent=`Chances of rain: ${Data.days[1].precip}%`
@@ -79,10 +73,12 @@ function weatherInfoRightFirstBox(Data){
 
 function weatherInfoRightSecondBox(Data){
     const date = new Date(Data.days[2].datetime)
+   
+  
     let Time =getDateForBoxes(date)
    document.querySelector(".secondBoxTitle").textContent=`${Time} ${date.getDate()}`
    document.querySelector(".secondBoxWeather").textContent=Data.days[2].conditions
-   document.querySelector(".secondBoxImage").src = secondBoxImage(Data)
+   document.querySelector(".secondBoxImage").src = secondBoxImage(Data,date)
    const farenhit=Data.days[2].temp
    document.querySelector(".secondBoxTemp").textContent=`${((farenhit-32)*5/9).toFixed(1)}°C`
    document.querySelector(".RainNumberBox2").textContent=`Chances of rain: ${Data.days[2].precip}%`
@@ -90,19 +86,42 @@ function weatherInfoRightSecondBox(Data){
 }
 
 
-function weatherImage(Data){
+function weatherImage(Data,date){
+   const Meridiem = date.getHours()>=12? "PM" : "AM";
+    
+    
    switch(true) {
         case Data.currentConditions.conditions==="Clear":
-            return "./sun.png";
 
+                if(Meridiem==="PM"){
+                 "./sun.png";
+                }
+                else{
+                    return "./crescent-moon.png"
+                }
+            
         case Data.currentConditions.conditions==="Partially cloudy":
+            if(Meridiem==="PM"){
             return "./PartiallyCloudy.png";
+            }
+            else{
+                return "./cloudy-night.png"
+            }
 
         case Data.currentConditions.conditions==="Overcast":
+            if(Meridiem==="PM"){
+        
             return "./overcast.png";
+            }
+            else{
+                return "./OvercastNight.png"
+            }
 
         case Data.currentConditions.conditions==="Rain, Partially cloudy":
+           
             return "./PartialRain.png"
+            
+         
 
         case Data.currentConditions.conditions==="Rain, Overcast":
             return "./OvercastRain.png"
@@ -110,16 +129,40 @@ function weatherImage(Data){
 
 }
 
-function firstBoxImage(Data){
+function firstBoxImage(Data,date){
+     
+    const Meridiem = date.getHours()>=12? "PM" : "AM";
+ 
+
     switch(true) {
+
         case Data.days[1].conditions==="Clear":
-            return "./sun.png";
+
+            if(Meridiem==="PM"){
+                "./sun.png";
+               }
+               else{
+                   return "./crescent-moon.png"
+               }
 
         case Data.days[1].conditions==="Partially cloudy":
-            return "./PartiallyCloudy.png";
 
+            if(Meridiem==="PM"){
+                return "./PartiallyCloudy.png";
+                }
+                else{
+                    return "./cloudy-night.png"
+                }
+        
         case Data.days[1].conditions==="Overcast":
-            return "./overcast.png";
+
+            if(Meridiem==="PM"){
+        
+                return "./overcast.png";
+                }
+                else{
+                    return "./OvercastNight.png"
+                }
 
         case Data.days[1].conditions==="Rain, Partially cloudy":
             return "./PartialRain.png";
@@ -131,23 +174,48 @@ function firstBoxImage(Data){
 
 }
 
-function secondBoxImage(Data){
+function secondBoxImage(Data,date){
+          
+    const Meridiem = date.getHours()>=12? "PM" : "AM";
+ 
+
     switch(true) {
+
         case Data.days[2].conditions==="Clear":
-            return "./sun.png";
+
+            if(Meridiem==="PM"){
+                "./sun.png";
+               }
+               else{
+                   return "./crescent-moon.png"
+               }
 
         case Data.days[2].conditions==="Partially cloudy":
-            return "./PartiallyCloudy.png";
 
+            if(Meridiem==="PM"){
+                return "./PartiallyCloudy.png";
+                }
+                else{
+                    return "./cloudy-night.png"
+                }
+        
         case Data.days[2].conditions==="Overcast":
-            return "./overcast.png";
+
+            if(Meridiem==="PM"){
+        
+                return "./overcast.png";
+                }
+                else{
+                    return "./OvercastNight.png"
+                }
 
         case Data.days[2].conditions==="Rain, Partially cloudy":
             return "./PartialRain.png";
 
-        case Data.days[2].conditions==="Rain, Overcast":
+        case Data.currentConditions[2]==="Rain, Overcast":
             return "./OvercastRain.png"
    }
+
 }
 
 function getDateForBoxes(date){
@@ -216,6 +284,63 @@ function getDateForBoxes(date){
     }
 
     return `${Day}, ${Month}`
+
+}
+
+function HourlyForeCast(Data){
+     
+    const date = new Date();
+
+    console.log(date)
+
+    let HourTemp = date.getHours()
+
+
+
+        if(HourTemp===23){
+            HourTemp=0
+        }
+
+     
+     for(let i=1;i<=6;i++){
+      
+        let smallBoxHour = (date.getHours()+i)%12||12
+        let Meridiem = smallBoxHour>=12? "PM" : "AM";
+        document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
+
+        if(HourTemp===0){ // this is not finished btw just need to set temp in it and shit just like else
+             for(let i=0;i<=5;i++){     
+                console.log(Data.days[0].hours[HourTemp])
+                HourTemp+=1
+             }
+        }
+
+        else{
+            let temp=((Data.days[0].hours[date.getHours()+i].temp-32)*5/9).toFixed(1);
+            document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
+        }
+
+
+
+     
+         
+       
+       
+     }
+   
+   
+ImageForHourlyForecast(Data)
+}
+
+
+function ImageForHourlyForecast(Data){
+    console.log(Data)
+ 
+
+
+
+  
+    
 
 }
  

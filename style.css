@@ -109,16 +109,16 @@ body{
 .MiddleContainer{
 display: flex;
 justify-content: center;
- 
+gap: 150px;
 }
 
 .LeftSideContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
  
      
+   
 }
 
 .LeftSideContainer h1{
@@ -144,14 +144,15 @@ justify-content: center;
 .Humidity>div:first-child,.WindSpeed>div:first-child,.HeatIndex>div:first-child{
     font-weight: bolder;
     
-    color: rgba(255, 255, 255, 0.815);
+     
 }
 
 .RightSideContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 200px;
+    
+    
 }
 
 .RightSideContainer>h1{
@@ -187,5 +188,40 @@ justify-content: center;
 .Rain>div:first-child{
     font-weight: bold;
 }
+
+ 
+
+.BottomContainer{
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     margin-top: -80px;
+     gap: 10px;
+}
+
+ 
+
+.BottomBoxesContainer{
+    display: flex;
+    gap: 25px;
+}
+
+.BoxItemsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+     
+}
+
+.Box{
+    border: 1px solid;
+    border-color: #9ca1a536;
+    border-radius: 5px;
+    
+    padding: 15px 25px 25px;
+}
+
+ 
 
  
