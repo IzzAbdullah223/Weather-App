@@ -89,19 +89,22 @@ function weatherInfoRightSecondBox(Data){
 function weatherImage(Data,date){
    const Meridiem = date.getHours()>=12? "PM" : "AM";
     
-    
+    console.log(Data)
    switch(true) {
-        case Data.currentConditions.conditions==="Clear":
 
-                if(Meridiem==="PM"){
-                 "./sun.png";
-                }
-                else{
-                    return "./crescent-moon.png"
-                }
+        case Data.currentConditions.conditions==="clear":
+            if(Data.currentConditions.icon==="clear-day"){
+                "./sun.png";
+               }
+               else{
+                   return "./crescent-moon.png"
+               }
+
+                 
+                
             
         case Data.currentConditions.conditions==="Partially cloudy":
-            if(Meridiem==="PM"){
+            if(Data.currentConditions.icon==="partly-cloudy-day"){
             return "./PartiallyCloudy.png";
             }
             else{
@@ -328,96 +331,63 @@ ImageForHourlyForecast(Data)
 
 function ImageForHourlyForecast(Data){
     const date = new Date();
+    console.log(Data)
  
-     console.log(Data.days[0].hours[date.getHours()+1])
-     console.log(Data.days[0].hours[date.getHours()+1].icon)
+     
         
 
      for(let i=1;i<=6;i++){
         const Meridiem = date.getHours()+1>=12? "PM" : "AM";
+    
         switch(true){
-            case Data.days[0].hours[date.getHours()+i].icon==="Clear":
-                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoxImage${i}`).src==="./sun.png"
-                }
+
              
 
-                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoximage${i}`).src==="./crescent-moon.png"
+            case Data.days[0].hours[date.getHours()+i].conditions==="Clear":
+
+                if(Data.days[0].hours[date.getHours()+i].icon==="clear-day"){
+                    document.querySelector(`.smallBoxImage${i}`).src="./sun.png"
+                }
+                else{
+                    document.querySelector(`.smallBoxImage${i}`).src="./crescent-moon.png"
                 }
 
-                else if(Meridiem ==="PM"){
-                    document.querySelector(`smallBoxImage${i}`).src==="./sun.png"
+                break;
+
+            case Data.days[0].hours[date.getHours()+i].conditions==="Partially cloudy":
+
+                if(Data.days[0].hours[date.getHours()+i].icon==="partly-cloudy-day"){
+                    console.log("hello?")
+                    document.querySelector(`.smallBoxImage${i}`).src="./PartiallyCloudy.png"
+                }
+                else{
+                    document.querySelector(`.smallBoxImage${i}`).src="./cloudy-night.png"
                 }
 
-               else{
-                    document.querySelector(`smallBoxImage${i}`).src==="./crescent-moon.png";
-               }     
-               break;
+                break;
 
+                case Data.days[0].hours[date.getHours()+i].conditions==="Overcast":
+                    if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){                       
+                        document.querySelector(`.smallBoxImage${i}`).src==="./overcast.png"
+                    }
+                 
+    
+                    else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11) {
 
-
-            case Data.days[0].hours[date.getHours()+i].icon==="Partially Cloudy":
-                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoxImage${i}`).src==="./PartiallyCloudy.png"
-                }
-             
-
-                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoximage${i}`).src==="./cloudy-night.png"
-                }
-
-                else if(Meridiem ==="PM"){
-                    document.querySelector(`smallBoxImage${i}`).src==="./PartiallyCloudy.png"
-                }
-
-               else{
-                    document.querySelector(`smallBoxImage${i}`).src==="./cloudy-night.png";
-               }     
-               break;
-               
-            case Data.days[0].hours[date.getHours()+i].icon==="Overcast":
-                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoxImage${i}`).src==="./overcast.png"
-                }
-             
-
-                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoximage${i}`).src==="./OvercastNight.png"
-                }
-
-                else if(Meridiem ==="PM"){
-                    document.querySelector(`smallBoxImage${i}`).src==="./overcast.png"
-                }
-
-               else{
-                    document.querySelector(`smallBoxImage${i}`).src==="./OvercastNight.png";
-               }     
-               break;
-
-            case Data.days[0].hours[date.getHours()+i].icon==="Rain, Partially cloudy":
-                if(Meridiem==="AM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoxImage${i}`).src==="./PartialRain.png"
-                }
-             
-
-                else if(Meridiem==="PM" && date.getHours()+i=== 7 || 8 || 9 ||10 ||11){
-                    document.querySelector(`.smallBoximage${i}`).src==="./PartialRainNight.png"
-                }
-
-                else if(Meridiem ==="PM"){
-                    document.querySelector(`smallBoxImage${i}`).src==="./PartialRain.png"
-                }
-
-               else{
-                    document.querySelector(`smallBoxImage${i}`).src==="./PartialRain.png";
-               }     
-               break;
-
-            case Data.days[0].hours[date.getHours()+i].icon==="Rain, Overcast":
-                    document.querySelector(`smallBoxImage${i}`).src==="./OvercastRain.png"
-
+                        document.querySelector(`.smallBoximage${i}`).src==="./OvercastNight.png"
+                    }
+    
+                    else if(Meridiem ==="PM"){
+                   
+                        document.querySelector(`smallBoxImage${i}`).src==="./overcast.png"
+                    }
+    
+                   else{
+                         
+                        document.querySelector(`smallBoxImage${i}`).src==="./OvercastNight.png";
+                   }     
+                   break;     
             
         }
-     }
+    }
 }
