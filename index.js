@@ -43,13 +43,14 @@ async function getWeatherData(City){
 
 function WeatherInfoLeft(Data){
     const date =  new Date()
+    console.log(Data)
      
      
 
      
    
   
-  placeName.textContent=Data.resolvedAddress
+  placeName.textContent=Data.address
   weatherStatus.textContent=Data.currentConditions.conditions
   const farenhit = Data.currentConditions.temp
   temp.textContent=`${((farenhit-32)*5/9).toFixed(1)}°C`
@@ -342,17 +343,19 @@ function HourlyForeCast(Data){
      for(let i=1;i<=6;i++){
       
         let smallBoxHour = (date.getHours()+i)%12||12
-        let Meridiem = smallBoxHour>=12? "PM" : "AM";
-        document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
+        let Meridiem = date.getHours()+i>=12? "PM" : "AM";
+         
+         
+        
 
-        if(HourTemp===0){ // this is not finished btw just need to set temp in it and shit just like else
+        if(HourTemp===0){ 
             HourTemp=1
             let temp1=((Data.days[0].hours[0].temp-32)*5/9).toFixed(1);
             document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp1} °C`
              for(let i=2;i<=6;i++){
                  
                 let smallBoxHour = (date.getHours()+i)%12||12
-                let Meridiem = smallBoxHour>=12? "PM" : "AM";
+                let Meridiem = date.getHours()+i>=12? "PM" : "AM";
                 document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
                 let temp=((Data.days[0].hours[HourTemp].temp-32)*5/9).toFixed(1);
                 document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
@@ -386,10 +389,10 @@ function HourlyForeCast(Data){
 
           
 
-             //if(Stop===true)
-              //  break;
+            if(Stop===true)
+                break;
             else{
-                
+            document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
             let temp=((Data.days[0].hours[date.getHours()+i].temp-32)*5/9).toFixed(1);
             document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
              }
