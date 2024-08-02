@@ -16,6 +16,16 @@ const HeatIndex = document.querySelector(".HeatIndexNumber")
 
 const SearchBTN = document.querySelector("Button")
 
+const MiddleContainer = document.querySelector(".MiddleContainer")
+
+const BottomContainer = document.querySelector(".BottomContainer")
+
+
+
+console.log(MiddleContainer)
+console.log(BottomContainer)
+
+
  SearchBTN.addEventListener("click", async ()=>{
     
     const Data = await  getWeatherData(InputField.value)
@@ -95,7 +105,7 @@ function weatherImage(Data,date){
    const Meridiem = date.getHours()>=12? "PM" : "AM";
     
    let Hour = (date.getHours())%12||12
-   console.log(Hour)
+     
     
    switch(true) {
 
@@ -120,13 +130,20 @@ function weatherImage(Data,date){
             }
 
         case Data.currentConditions.conditions==="Overcast":
-            if(Meridiem==="PM"){
-        
-            return "./overcast.png";
-            }
-            else{
-                return "./OvercastNight.png"
-            }
+             if(Meridiem==="AM" && Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==12){
+                return "./overcast.png";
+             }
+             else if(Meridiem=="PM" && Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11){
+                return "./OvercastNight.png";
+             }
+
+             else if(Meridiem==="AM"){
+                return "./OvercastNight.png";
+             }
+
+             else{
+                return "./overcast.png";
+             }
 
         case Data.currentConditions.conditions==="Rain":
             return "./rain.png"
@@ -409,15 +426,11 @@ ImageForHourlyForecast(Data)
 
 function ImageForHourlyForecast(Data){
     const date = new Date();
-    
- 
-     
-        
-    console.log(Data)
      for(let i=1;i<=6;i++){
         const Meridiem = date.getHours()+i>=12? "PM" : "AM";
-        console.log(date.getHours()+i)
+        let hour=(date.getHours()+i)%12||12
         console.log(Meridiem)
+        console.log(hour)
         switch(true){
             case Data.days[0].hours[date.getHours()+i].conditions==="Clear":
 
@@ -444,15 +457,15 @@ function ImageForHourlyForecast(Data){
                 break;
 
                 case Data.days[0].hours[date.getHours()+i].conditions==="Overcast":
-                    if((Meridiem==="AM") && date.getHours()+i===6 || date.getHours()+i=== 7 || date.getHours()+i=== 8 || date.getHours()+i=== 9 || date.getHours()+i===10 || date.getHours()+i===11){ 
-                              
+                    if(Meridiem=="AM" && (hour==6 || hour== 7 || hour== 8 || hour== 9 || hour==10) || hour==11) {  
+                        console.log("why are u executing?")
                         document.querySelector(`.smallBoxImage${i}`).src="./overcast.png"
                     }
                  
     
-                    else if(Meridiem==="PM" && date.getHours()+i=== 7 || date.getHours()+i=== 8 || date.getHours()+i=== 9 || date.getHours()+i===10 || date.getHours()+i===1 ) {
-                         
-                        document.querySelector(`.smallBoximage${i}`).src="./OvercastNight.png"
+                    else if(Meridiem=="PM" && (hour== 7 || hour== 8 || hour== 9 || hour==10 || hour==11) ) {
+                        console.log(i)
+                        document.querySelector(`.smallBoxImage${i}`).src="./OvercastNight.png"
                     }
     
                     else if(Meridiem ==="PM"){  
