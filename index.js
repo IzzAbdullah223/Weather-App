@@ -94,6 +94,9 @@ function weatherInfoRightSecondBox(Data){
 function weatherImage(Data,date){
    const Meridiem = date.getHours()>=12? "PM" : "AM";
     
+   
+   console.log(Hour)
+    
    switch(true) {
 
         case Data.currentConditions.conditions==="Clear":
@@ -412,7 +415,7 @@ function ImageForHourlyForecast(Data){
         
     console.log(Data)
      for(let i=1;i<=6;i++){
-        const Meridiem = date.getHours()+1>=12? "PM" : "AM";
+        const Meridiem = date.getHours()+i>=12? "PM" : "AM";
         console.log(date.getHours()+i)
         console.log(Meridiem)
         switch(true){
@@ -420,6 +423,7 @@ function ImageForHourlyForecast(Data){
 
                 if(Data.days[0].hours[date.getHours()+i].icon==="clear-day"){
                     document.querySelector(`.smallBoxImage${i}`).src="./sun.png"
+                    console.log(Data.days[0].hours[date.getHours()+i])
                 }
                 else{
                     document.querySelector(`.smallBoxImage${i}`).src="./crescent-moon.png"
