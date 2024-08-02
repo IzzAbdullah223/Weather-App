@@ -94,7 +94,7 @@ function weatherInfoRightSecondBox(Data){
 function weatherImage(Data,date){
    const Meridiem = date.getHours()>=12? "PM" : "AM";
     
-   
+   let Hour = (date.getHours())%12||12
    console.log(Hour)
     
    switch(true) {
