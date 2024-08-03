@@ -420,7 +420,6 @@ function HourlyForeCast(Data){
                 for(let i2=i;i2<=6;i2++){
                     let smallBoxHour = (date.getHours()+i2)%12||12
                     let Meridiem = smallBoxHour>=13? "PM" : "AM";
-                    console.log(Meridiem)
                     document.querySelector(`.smallBoxHour${i2}`).textContent=`${smallBoxHour} ${Meridiem}`
                     let temp=((Data.days[0].hours[hour].temp-32)*5/9).toFixed(1);
                     document.querySelector(`.smallBoxTemp${i2}`).textContent=`${temp} °C` 
@@ -448,9 +447,28 @@ ImageForHourlyForecast(Data)
 
 function ImageForHourlyForecast(Data){
     const date = new Date();
+    let Stop=false;
+
      for(let i=1;i<=6;i++){
+
         const Meridiem = date.getHours()+i>=13? "PM" : "AM";
         let hour=(date.getHours()+i)%12||12
+
+        if(date.getHours()+i>23){
+            Stop=true;
+            let newHour=0;
+            let newI=0;
+            for(let i2=i;i2<=6;i2++){
+                let IfMeridiem = newHour+newI>=13? "PM" : "AM";
+                let Ifhour=(newHour+newI)%12||12
+                console.log(`${i2} ${IfMeridiem} ${Ifhour}`)
+                newI+=1
+            }
+
+        }
+
+        else{
+
         switch(true){
             case Data.days[0].hours[date.getHours()+i].conditions==="Clear":
 
@@ -498,5 +516,8 @@ function ImageForHourlyForecast(Data){
                    break;       
             
         }
+    }
+    if(Stop===true)
+        break;
     }
 }
