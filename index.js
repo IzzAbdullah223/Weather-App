@@ -16,21 +16,25 @@ const HeatIndex = document.querySelector(".HeatIndexNumber")
 
 const SearchBTN = document.querySelector("Button")
 
-const MiddleContainer = document.querySelector(".MiddleContainer")
+const MiddleContainer = document.querySelector(".Middle")
 
 const BottomContainer = document.querySelector(".BottomContainer")
 
+const LoadingContainer = document.querySelector(".LoadingDataContainer")
+
+const CopyRightContainer = document.querySelector(".CopyRightContainer")
 
 
-console.log(MiddleContainer)
-console.log(BottomContainer)
+
+
+ 
 
 
  SearchBTN.addEventListener("click", async ()=>{
     
     const Data = await  getWeatherData(InputField.value)
 
-     WeatherInfoLeft(Data)
+    WeatherInfoLeft(Data)
 
     weatherInfoRightFirstBox(Data);
 
@@ -40,8 +44,14 @@ console.log(BottomContainer)
 })
 
 async function getWeatherData(City){
-    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${City}?key=${APIKEY}`)
+        MiddleContainer.style.display="none";
+        BottomContainer.style.display="none";
+        CopyRightContainer.style.display="none";
+        LoadingContainer.style.display=""
+
     
+  
+    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${City}?key=${APIKEY}`)
    
     
 
@@ -52,6 +62,14 @@ async function getWeatherData(City){
 
 
 function WeatherInfoLeft(Data){
+    setTimeout(() => {
+        MiddleContainer.style.display="";
+        BottomContainer.style.display="";
+        CopyRightContainer.style.display="";
+        LoadingContainer.style.display="none"
+        
+    }, 2000);
+   
     const date =  new Date()
     console.log(Data)
      

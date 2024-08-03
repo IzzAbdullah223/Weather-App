@@ -245,4 +245,25 @@ margin-bottom: 65px;
 }
 
 
+.LoadingDataContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoadingDataContainer div{
+    font-size: 3rem;
+}
+
+.fetchingDots{
+    display: flex;
+    align-items: center;
+}
+
+.dots{
+}
+ 
+
+
  
