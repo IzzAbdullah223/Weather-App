@@ -48,6 +48,7 @@ async function getWeatherData(City){
         BottomContainer.style.display="none";
         CopyRightContainer.style.display="none";
         LoadingContainer.style.display=""
+        document.querySelector(".PageContainer").style.gap="0px"
 
     
   
@@ -67,11 +68,12 @@ function WeatherInfoLeft(Data){
         BottomContainer.style.display="";
         CopyRightContainer.style.display="";
         LoadingContainer.style.display="none"
+        document.querySelector(".PageContainer").style.gap="60px"
         
     }, 2000);
    
     const date =  new Date()
-    console.log(Data)
+     
      
      
 
