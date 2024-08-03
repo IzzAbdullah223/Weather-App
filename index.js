@@ -150,7 +150,7 @@ function weatherImage(Data,date){
             }
 
         case Data.currentConditions.conditions==="Overcast":
-             if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==12)){
+             if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
                 return "./overcast.png";
              }
              else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
@@ -392,7 +392,7 @@ function HourlyForeCast(Data){
             HourTemp=1
             let temp1=((Data.days[0].hours[0].temp-32)*5/9).toFixed(1);
             document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp1} °C`
-             for(let i=2;i<=6;i++){
+             for(let i=1;i<=6;i++){
                  
                 let smallBoxHour = (date.getHours()+i)%12||12
                 let Meridiem = date.getHours()+i>=13? "PM" : "AM";
@@ -400,6 +400,7 @@ function HourlyForeCast(Data){
                 let temp=((Data.days[0].hours[HourTemp].temp-32)*5/9).toFixed(1);
                 document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
                 HourTemp+=1 
+                console.log("are u executing hourtemp")
              }
              Stop1=true
         }
@@ -412,15 +413,16 @@ function HourlyForeCast(Data){
 
         else{
 
-             if(date.getHours()+i>=24){
+             if(date.getHours()+i>=23){
                 
                 
                 Stop=true
                 let hour=0;
                 for(let i2=i;i2<=6;i2++){
-                    let smallBoxHour = (date.getHours()+i2)%12||12
+                    let smallBoxHour = (date.getHours()+i)%12||12
                     let Meridiem = smallBoxHour>=13? "PM" : "AM";
-                    document.querySelector(`.smallBoxHour${i2}`).textContent=`${smallBoxHour} ${Meridiem}`
+                    console.log("are u executing else? ")
+                    document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
                     let temp=((Data.days[0].hours[hour].temp-32)*5/9).toFixed(1);
                     document.querySelector(`.smallBoxTemp${i2}`).textContent=`${temp} °C` 
                     hour+=1
