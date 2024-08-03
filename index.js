@@ -122,7 +122,7 @@ function weatherInfoRightSecondBox(Data){
 
 
 function weatherImage(Data,date){
-   const Meridiem = date.getHours()>=12? "PM" : "AM";
+   const Meridiem = date.getHours()>=13? "PM" : "AM";
     
    let Hour = (date.getHours())%12||12
      
@@ -186,7 +186,7 @@ function weatherImage(Data,date){
 function firstBoxImage(Data,date){
      
      
-    const Meridiem = date.getHours()>=12? "PM" : "AM";
+    const Meridiem = date.getHours()>=13? "PM" : "AM";
   
  
 
@@ -232,7 +232,7 @@ function firstBoxImage(Data,date){
 
 function secondBoxImage(Data,date){
           
-    const Meridiem = date.getHours()>=12? "PM" : "AM";
+    const Meridiem = date.getHours()>=13? "PM" : "AM";
  
 
     switch(true) {
@@ -388,14 +388,14 @@ function HourlyForeCast(Data){
          
         
 
-        if(HourTemp===0){ 
+        if(HourTemp===0){
             HourTemp=1
             let temp1=((Data.days[0].hours[0].temp-32)*5/9).toFixed(1);
             document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp1} °C`
              for(let i=2;i<=6;i++){
                  
                 let smallBoxHour = (date.getHours()+i)%12||12
-                let Meridiem = date.getHours()+i>=12? "PM" : "AM";
+                let Meridiem = date.getHours()+i>=13? "PM" : "AM";
                 document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
                 let temp=((Data.days[0].hours[HourTemp].temp-32)*5/9).toFixed(1);
                 document.querySelector(`.smallBoxTemp${i}`).textContent=`${temp} °C`
@@ -413,16 +413,18 @@ function HourlyForeCast(Data){
         else{
 
              if(date.getHours()+i>=24){
-
+                
+                
                 Stop=true
                 let hour=0;
                 for(let i2=i;i2<=6;i2++){
-                    let smallBoxHour = (date.getHours()+i)%12||12
-                    let Meridiem = smallBoxHour>=12? "PM" : "AM";
-                    document.querySelector(`.smallBoxHour${i}`).textContent=`${smallBoxHour} ${Meridiem}`
+                    let smallBoxHour = (date.getHours()+i2)%12||12
+                    let Meridiem = smallBoxHour>=13? "PM" : "AM";
+                    console.log(Meridiem)
+                    document.querySelector(`.smallBoxHour${i2}`).textContent=`${smallBoxHour} ${Meridiem}`
                     let temp=((Data.days[0].hours[hour].temp-32)*5/9).toFixed(1);
-                    document.querySelector(`.smallBoxTemp${i2}`).textContent=`${temp} °C`  
-                    hour+=1     
+                    document.querySelector(`.smallBoxTemp${i2}`).textContent=`${temp} °C` 
+                    hour+=1
                 }
 
              }
@@ -447,10 +449,8 @@ ImageForHourlyForecast(Data)
 function ImageForHourlyForecast(Data){
     const date = new Date();
      for(let i=1;i<=6;i++){
-        const Meridiem = date.getHours()+i>=12? "PM" : "AM";
+        const Meridiem = date.getHours()+i>=13? "PM" : "AM";
         let hour=(date.getHours()+i)%12||12
-        console.log(Meridiem)
-        console.log(hour)
         switch(true){
             case Data.days[0].hours[date.getHours()+i].conditions==="Clear":
 
@@ -477,14 +477,14 @@ function ImageForHourlyForecast(Data){
                 break;
 
                 case Data.days[0].hours[date.getHours()+i].conditions==="Overcast":
-                    if(Meridiem=="AM" && (hour==6 || hour== 7 || hour== 8 || hour== 9 || hour==10) || hour==11) {  
-                        console.log("why are u executing?")
+                    if(Meridiem=="AM" && (hour==6 || hour== 7 || hour== 8 || hour== 9 || hour==10 || hour==11)){  
+                    
                         document.querySelector(`.smallBoxImage${i}`).src="./overcast.png"
                     }
                  
     
                     else if(Meridiem=="PM" && (hour== 7 || hour== 8 || hour== 9 || hour==10 || hour==11) ) {
-                        console.log(i)
+                         
                         document.querySelector(`.smallBoxImage${i}`).src="./OvercastNight.png"
                     }
     
