@@ -120,9 +120,6 @@ margin-bottom: 65px;
     display: flex;
     flex-direction: column;
     align-items: center;
- 
-     
-   
 }
 
 .LeftSideContainer h1{
@@ -253,15 +250,13 @@ margin-bottom: 65px;
 }
 
 .LoadingDataContainer div{
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .fetchingDots{
     display: flex;
     align-items: center;
-}
-
-.dots{
+    
 }
  
 
