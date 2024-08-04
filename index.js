@@ -44,6 +44,7 @@ const CopyRightContainer = document.querySelector(".CopyRightContainer")
 })
 
 async function getWeatherData(City){
+         
         MiddleContainer.style.display="none";
         BottomContainer.style.display="none";
         CopyRightContainer.style.display="none";
@@ -63,6 +64,7 @@ async function getWeatherData(City){
 
 
 function WeatherInfoLeft(Data){
+   
     setTimeout(() => {
         MiddleContainer.style.display="";
         BottomContainer.style.display="";
@@ -80,7 +82,7 @@ function WeatherInfoLeft(Data){
      
    
   
-  placeName.textContent=Data.address
+  placeName.textContent=Data.resolvedAddress
   weatherStatus.textContent=Data.currentConditions.conditions
   const farenhit = Data.currentConditions.temp
   temp.textContent=`${((farenhit-32)*5/9).toFixed(1)}°C`
