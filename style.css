@@ -258,6 +258,16 @@ margin-bottom: 65px;
     align-items: center;
     
 }
+
+.ErrorContainer{
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+ 
+}
  
 
 
