@@ -1,3 +1,4 @@
+
 const APIKEY = "3XFKEXCBX9MZZJ9CB3W2QWZXH"
 
 const InputField = document.querySelector("Input")
@@ -26,17 +27,27 @@ const CopyRightContainer = document.querySelector(".CopyRightContainer")
 
 const ErrorContainer = document.querySelector(".ErrorContainer")
 
-console.log(ErrorContainer);
-
-
-
  
+
+const PageWeather  =(async ()=>{
+    const Data = await getWeatherData("Dubai")
+    WeatherInfoLeft(Data)
+    placeName.textContent=Data.address
+
+    weatherInfoRightFirstBox(Data);
+
+    weatherInfoRightSecondBox(Data);
+
+    HourlyForeCast(Data)
+    
+})
+ 
+PageWeather()
 
 
  SearchBTN.addEventListener("click", async ()=>{
-    
+    ErrorContainer.style.display="none"
     const Data = await  getWeatherData(InputField.value)
-   console.log(Data)
     if(Data!=undefined){
     WeatherInfoLeft(Data)
 
@@ -47,18 +58,25 @@ console.log(ErrorContainer);
     HourlyForeCast(Data)
     }
 
+    else{
+        LoadingContainer.style.display="none"
+        MiddleContainer.style.display="none"
+        BottomContainer.style.display="none"
+        CopyRightContainer.style.display=""
+        ErrorContainer.style.display=""
+    }
+
 
     
      
 })
 
 async function getWeatherData(City){
-         
+       
         MiddleContainer.style.display="none";
         BottomContainer.style.display="none";
         CopyRightContainer.style.display="none";
         LoadingContainer.style.display=""
-        document.querySelector(".PageContainer").style.gap="0px"
 
     
   
@@ -75,15 +93,17 @@ async function getWeatherData(City){
 
 
 function WeatherInfoLeft(Data){
-   
+    
     setTimeout(() => {
         MiddleContainer.style.display="";
         BottomContainer.style.display="";
         CopyRightContainer.style.display="";
         LoadingContainer.style.display="none"
-        document.querySelector(".PageContainer").style.gap="60px"
-        
+        ErrorContainer.style.display="none"
     }, 2000);
+
+
+
    
     const date =  new Date()
      
@@ -134,8 +154,6 @@ function weatherInfoRightSecondBox(Data){
 function weatherImage(Data,date){
    const Meridiem = date.getHours()>=13? "PM" : "AM";
    let Hour = (date.getHours())%12||12
-     
-    
    switch(true) {
 
         case Data.currentConditions.conditions==="Clear":
@@ -152,6 +170,7 @@ function weatherImage(Data,date){
             
         case Data.currentConditions.conditions==="Partially cloudy":
             if(Data.currentConditions.icon==="partly-cloudy-day"){
+                 
             return "./PartiallyCloudy.png";
             }
             else{
