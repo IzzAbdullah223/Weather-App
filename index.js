@@ -47,6 +47,8 @@ console.log(ErrorContainer);
     HourlyForeCast(Data)
     }
 
+
+    
      
 })
 
@@ -214,22 +216,40 @@ function firstBoxImage(Data,date){
     switch(true) {
 
         case Data.days[1].conditions==="Clear":
-
-            if(Meridiem==="PM"){
-                "./sun.png";
+             
+            if(Data.currentConditions.icon==="clear-day"){              
+                return  "./sun.png";
                }
                else{
                    return "./crescent-moon.png"
                }
 
+                 
+                
+            
         case Data.days[1].conditions==="Partially cloudy":
+            if(Data.currentConditions.icon==="partly-cloudy-day"){
+            return "./PartiallyCloudy.png";
+            }
+            else{
+                return "./cloudy-night.png"
+            }
 
-               if(Meridiem==="PM"){
-                   return "./PartiallyCloudy.png";
-                   }
-                   else{
-                       return "./cloudy-night.png"
-                   }
+        case Data.days[1].conditions==="Overcast":
+             if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                return "./overcast.png";
+             }
+             else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                return "./OvercastNight.png";
+             }
+
+             else if(Meridiem==="AM"){
+                return "./OvercastNight.png";
+             }
+
+             else{
+                return "./overcast.png";
+             }
 
         case Data.days[1].conditions==="Rain, Partially cloudy":
                 if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
@@ -245,16 +265,15 @@ function firstBoxImage(Data,date){
                  else{
                     return "./PartialRain.png";
                  }
-        
-        case Data.days[1].conditions==="Overcast":
 
-                if(Meridiem==="PM"){
         
-                  return "./overcast.png";
-                 }
-                 else{
-                     return "./OvercastNight.png"
-                    }
+        case Data.days[1].conditions==="Rain":
+            return "./rain.png"
+
+
+        
+            
+         
 
         case Data.days[1].conditions==="Rain, Overcast":
             return "./OvercastRain.png"
@@ -267,52 +286,64 @@ function secondBoxImage(Data,date){
           
     const Meridiem = date.getHours()>=13? "PM" : "AM";
     let Hour = (date.getHours())%12||12
- 
+
 
     switch(true) {
 
         case Data.days[2].conditions==="Clear":
-
-            if(Meridiem==="PM"){
-                "./sun.png";
+             
+            if(Data.currentConditions.icon==="clear-day"){              
+                return  "./sun.png";
                }
                else{
                    return "./crescent-moon.png"
                }
 
+                 
+                
+            
         case Data.days[2].conditions==="Partially cloudy":
+            if(Data.currentConditions.icon==="partly-cloudy-day"){
+            return "./PartiallyCloudy.png";
+            }
+            else{
+                return "./cloudy-night.png"
+            }
 
-            if(Meridiem==="PM"){
-                return "./PartiallyCloudy.png";
-                }
-                else{
-                    return "./cloudy-night.png"
-                }
-        
         case Data.days[2].conditions==="Overcast":
-
-            if(Meridiem==="PM"){
-        
+             if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
                 return "./overcast.png";
-                }
-                else{
-                    return "./OvercastNight.png"
-                }
-
-        case Data.days[2].conditions==="Rain, Partially cloudy":
-            if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
-                return "./PartialRain.png";
              }
              else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
-                return "./PartialRainNight.png";
+                return "./OvercastNight.png";
              }
+
              else if(Meridiem==="AM"){
-                return "./PartialRainNight.png";
+                return "./OvercastNight.png";
              }
 
              else{
-                return "./PartialRain.png";
+                return "./overcast.png";
              }
+
+        case Data.days[2].conditions==="Rain, Partially cloudy":
+                if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRain.png";
+                 }
+                 else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRainNight.png";
+                 }
+                 else if(Meridiem==="AM"){
+                    return "./PartialRainNight.png";
+                 }
+    
+                 else{
+                    return "./PartialRain.png";
+                 }
+
+        
+        case Data.days[2].conditions==="Rain":
+            return "./rain.png"
 
         case Data.days[2].conditions==="Rain, Overcast":
             return "./OvercastRain.png"
