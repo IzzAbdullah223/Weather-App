@@ -175,9 +175,22 @@ function weatherImage(Data,date){
         case Data.currentConditions.conditions==="Rain":
             return "./rain.png"
 
+
+
         case Data.currentConditions.conditions==="Rain, Partially cloudy":
-           
-            return "./PartialRain.png"
+                if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRain.png";
+                 }
+                 else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRainNight.png";
+                 }
+                 else if(Meridiem==="AM"){
+                    return "./PartialRainNight.png";
+                 }
+    
+                 else{
+                    return "./PartialRain.png";
+                 }
 
 
         
@@ -194,6 +207,7 @@ function firstBoxImage(Data,date){
      
      
     const Meridiem = date.getHours()>=13? "PM" : "AM";
+    let Hour = (date.getHours())%12||12
   
  
 
@@ -210,25 +224,37 @@ function firstBoxImage(Data,date){
 
         case Data.days[1].conditions==="Partially cloudy":
 
-            if(Meridiem==="PM"){
-                return "./PartiallyCloudy.png";
-                }
-                else{
-                    return "./cloudy-night.png"
-                }
+               if(Meridiem==="PM"){
+                   return "./PartiallyCloudy.png";
+                   }
+                   else{
+                       return "./cloudy-night.png"
+                   }
+
+        case Data.days[1].conditions==="Rain, Partially cloudy":
+                if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRain.png";
+                 }
+                 else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                    return "./PartialRainNight.png";
+                 }
+                 else if(Meridiem==="AM"){
+                    return "./PartialRainNight.png";
+                 }
+    
+                 else{
+                    return "./PartialRain.png";
+                 }
         
         case Data.days[1].conditions==="Overcast":
 
-            if(Meridiem==="PM"){
+                if(Meridiem==="PM"){
         
-                return "./overcast.png";
-                }
-                else{
-                    return "./OvercastNight.png"
-                }
-
-        case Data.days[1].conditions==="Rain, Partially cloudy":
-            return "./PartialRain.png";
+                  return "./overcast.png";
+                 }
+                 else{
+                     return "./OvercastNight.png"
+                    }
 
         case Data.days[1].conditions==="Rain, Overcast":
             return "./OvercastRain.png"
@@ -240,6 +266,7 @@ function firstBoxImage(Data,date){
 function secondBoxImage(Data,date){
           
     const Meridiem = date.getHours()>=13? "PM" : "AM";
+    let Hour = (date.getHours())%12||12
  
 
     switch(true) {
@@ -273,7 +300,19 @@ function secondBoxImage(Data,date){
                 }
 
         case Data.days[2].conditions==="Rain, Partially cloudy":
-            return "./PartialRain.png";
+            if(Meridiem==="AM" && (Hour==6 || Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                return "./PartialRain.png";
+             }
+             else if(Meridiem=="PM" && (Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11)){
+                return "./PartialRainNight.png";
+             }
+             else if(Meridiem==="AM"){
+                return "./PartialRainNight.png";
+             }
+
+             else{
+                return "./PartialRain.png";
+             }
 
         case Data.days[2].conditions==="Rain, Overcast":
             return "./OvercastRain.png"
@@ -370,10 +409,8 @@ function getDateForBoxes(date){
 
 }
 
-function HourlyForeCast(Data){
-    console.log(Data.days[0].hours)
+function HourlyForeCast(Data){   
     const date = new Date();
-    console.log(date.getHours)
     let HourTemp = date.getHours()
 
     let Stop=false;
@@ -531,7 +568,6 @@ function ImageForHourlyForecast(Data){
 
                 if(Data.days[0].hours[date.getHours()+i].icon==="clear-day"){
                     document.querySelector(`.smallBoxImage${i}`).src="./sun.png"
-                    console.log(Data.days[0].hours[date.getHours()+i])
                 }
                 else{
                     document.querySelector(`.smallBoxImage${i}`).src="./crescent-moon.png"
