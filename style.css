@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body{
+    background-color: #212529;
+    color: #dee2e6;
+    
+}
+
+.PageContainer{
+
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+   
+}
+
+.HeaderContainer{
+    color: #dee2e6;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+   
+}
+
+.HeaderContainer img{
+    width: 2%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+
+.Temp{
+    display: flex;
+    gap: 10px;
+}
+
+.celsius , .farenhit{
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: 0.5s;
+}
+
+.celsius:hover, .farenhit:hover{
+    color: #7d9ed3;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 2px;
+}
+
+.selected{
+    color:  #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 2px;
+}
+
+.notselected{
+    color: #5f92e6;
+}
+
+.Title{
+    font-size: 2.2rem;
+}
+
+.SearchContainer{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  
+}
+
+.SearchContainer input{
+    background-color: #212529;
+    padding: 8px 15px;
+    border: 1px solid;
+    border-color: #9ca1a536;
+    border-radius: 5px;
+    color: white;
+    transition: 0.5s;
+}
+
+.SearchContainer input:focus{
+    outline: 1px  solid #86b7fe;
+    box-shadow: 0px 0px 10px  rgba(27, 68, 204, 0.562);
+}
+
+.SearchContainer button{
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    padding: 0px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.SearchContainer button:hover{
+    background-color: #0d6dfdc5;
+
+}
+
+.MiddleContainer{
+display: flex;
+justify-content: center;
+gap: 150px;
+margin-bottom: 65px;
+}
+
+.LeftSideContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LeftSideContainer h1{
+    margin-bottom: 5px;
+}
+
+.LeftSideContainer h2{
+    margin-bottom: 5px;
+}
+
+.LeftSideContainer img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Humidity,.WindSpeed,.HeatIndex{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 4px;
+}
+
+.Humidity>div:first-child,.WindSpeed>div:first-child,.HeatIndex>div:first-child{
+    font-weight: bolder;
+    
+     
+}
+
+.RightSideContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+.RightSideContainer>h1{
+    margin-bottom: 10px;
+}
+.BoxesContainer{
+ display: flex;
+    gap: 25px;;
+    
+ 
+ 
+}
+
+.firstBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #cfd0d131;
+    padding: 20px 80px;
+    border-radius: 8px;
+
+
+}
+
+
+
+.Rain{
+    display: flex;
+    gap: 25px;
+}
+
+.Rain>div:first-child{
+    font-weight: bold;
+}
+
+ 
+
+.BottomContainer{
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     margin-top: -80px;
+     gap: 10px;
+}
+
+ 
+
+.BottomBoxesContainer{
+    display: flex;
+    gap: 25px;
+}
+
+.BoxItemsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+     
+}
+
+.Box{
+    border: 1px solid;
+    border-color: #9ca1a536;
+    border-radius: 5px;
+    
+    padding: 15px 25px 25px;
+}
+
+.CopyRightContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    gap: 10px;  
+    margin-top: 700px;
+}
+
+.CopyRightContainer img{
+    width: 30px;
+}
+
+
+
+.CopyRightContainer a, a:visited, a:hover, a:active{  
+    color:#56a8fe ;
+}
+
+
+.LoadingDataContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoadingDataContainer div{
+    font-size: 2rem;
+}
+
+.fetchingDots{
+    display: flex;
+    align-items: center;
+    
+}
+.ErrorContainer{
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

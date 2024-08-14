@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="PageContainer"> 
+    <div class="Top"> 
+        <div class="HeaderContainer">
+            <div class="Temp">
+                <div class="celsius selected">°C</div>
+                <div class="farenhit notselected">°F</div>
+            </div>
+            <div class="TitleContainer"> 
+                <div class="Title">MyWeather.com</div>
+            </div>
+            <img src="Sun.svg" class="LightMode">
+        </div>
+        <div class="SearchContainer">
+            <input placeholder="Enter city name">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <div class="Middle" style="display: none;">
+        <div class="MiddleContainer">
+            <div class="LeftSideContainer">
+                <h1 class="LocationName"></h1>
+                <div class="WeatherStatus"></div>
+                <img src="" class="leftImage" width="100px">
+                <h1 class="TempNumber"></h1>
+                <div class="Humidity">
+                    <div>Humidity </div>
+                    <div class="HumidityNumber"></div>
+                </div>
+                <div class="WindSpeed">
+                    <div>Wind Speed</div>
+                    <div class="WindSpeedNumber"></div>
+                </div>
+                <div class="HeatIndex">
+                    <div>Heat Index</div>
+                    <div class="HeatIndexNumber"></div>
+                </div>
+
+            </div>
+
+            <div class="RightSideContainer">
+                <h1 class="forecastTitle">Week Forecast</h1>
+                <div class="BoxesContainer">
+                    <div class="firstBox">
+                        <div class="firstBoxTitle"></div>
+                        <div class="firstBoxWeather"></div>
+                        <img src="" class="firstBoxImage" width="50px">
+                        <h1 class="firstBoxTemp"></h1>
+                        <div class="RainNumberBox1"></div>
+                       
+                    </div>
+                    <div class="firstBox">
+                        <div class="secondBoxTitle"></div>
+                        <div class="secondBoxWeather"></div>
+                        <img src="" class="secondBoxImage" width="50px">
+                        <h1 class="secondBoxTemp"></h1>
+                        <div class="RainNumberBox2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="LoadingDataContainer" style="display: none;">
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+            <dotlottie-player src="https://lottie.host/e15847df-524d-4383-a90f-c065c2189641/MfFtPzXfZ7.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
+    </div>
+
+    <div class="ErrorContainer" style="display: none;">
+        <h1>😔</h1>
+        <div>Something went wrong, try entering a valid location or refreshing the page</div>
+        <div>Error: No matching location found.</div>
+
+    </div>
+  
+    <div class="BottomContainer" style="display: none;" >
+        <h1>Hourly Forecast</h1>
+        <div class="BottomBoxesContainer">
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour1"></div>
+                    <img class="smallBoxImage1" src="" width="60px">
+                    <div class="smallBoxTemp1"></div>
+                </div>
+            </div>
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour2"></div>
+                    <img class="smallBoxImage2" src="" width="60px">
+                    <div class="smallBoxTemp2"></div>
+                </div>
+            </div>
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour3"></div>
+                    <img class="smallBoxImage3" src="" width="60px">
+                    <div class="smallBoxTemp3"></div>
+                </div>
+            </div>
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour4"></div>
+                    <img class="smallBoxImage4" src="" width="60px">
+                    <div class="smallBoxTemp4"></div>
+                </div>
+            </div>
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour5"></div>
+                    <img class="smallBoxImage5" src="" width="60px">
+                    <div class="smallBoxTemp5"></div>
+                </div>
+            </div>
+
+            <div class="Box">
+                <div class="BoxItemsContainer">
+                    <div class="smallBoxHour6"></div>
+                    <img class="smallBoxImage6" src="" width="60px">
+                    <div class="smallBoxTemp6"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="CopyRightContainer">
+        <div>Made with </div>
+        <img src="Heart.png">
+        <div>by</div>
+        <a href="https://github.com/IzzAbdullah223?tab=repositories">Izz Abdallah</a>
+    </div>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>
