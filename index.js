@@ -91,39 +91,50 @@ function weatherInfoRight(Data){
 
 function HourlyWeather(Data){
     const date = new Date()
-    const Meridiem = date.getHours()>=13? "PM" : "AM";
     let tempHour = date.getHours()
+    let tempHour2=0
     for(let i=1;i<=6;i++){
+        const Meridiem = date.getHours()+i>=12? "PM" : "AM";
         let Hour = (date.getHours()+i)%12||12
         let WeeklyHour=(tempHour+i)%12||12
+        if(tempHour+i>=24){
+            document.querySelector(`.smallBoxHour${i}`).textContent=`${Hour} ${"AM"}`
+            document.querySelector(`.smallBoxTemp${i}`).textContent=`${((Data.days[0].hours[tempHour2].temp-32)/1.8).toFixed(2)}°C`
+            document.querySelector(`.smallBoxImage${i}`).src=WeatherIcon(Data.days[0].hours[tempHour2].conditions,WeeklyHour)
+            tempHour2+=1
+        }
+        else{
         document.querySelector(`.smallBoxHour${i}`).textContent=`${Hour} ${Meridiem}`
         document.querySelector(`.smallBoxTemp${i}`).textContent=`${((Data.days[0].hours[tempHour+i].temp-32)/1.8).toFixed(2)}°C`
         document.querySelector(`.smallBoxImage${i}`).src=WeatherIcon(Data.days[0].hours[tempHour+i].conditions,WeeklyHour)
+        }
     }
 }
 
 function WeatherIcon(Conditions,WeeklyHour){
     const date = new Date()
-    const Meridiem = date.getHours()>=13? "PM" : "AM";
+    const Meridiem = date.getHours()>=12? "PM" : "AM";
+    console.log(Meridiem)
     let Hour = (date.getHours())%12||12
+    console.log(Hour)
     if(Meridiem==="PM"){
         switch(true){
             case Conditions==="Clear":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12
+                if(Hour ==6||Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12
                  || WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./crescent-moon.png"
                 else
                     return "./sun.png"
 
             case Conditions==="Partially cloudy":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 ||
+                if(Hour ==6||Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 ||
                  WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12) 
                         return "./cloudy-night.png"
                     else
                         return "./PartiallyCloudy.png"
 
             case Conditions==="Overcast":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 ||
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 ||
                   WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./OvercastNight.png"
                 else
@@ -133,7 +144,7 @@ function WeatherIcon(Conditions,WeeklyHour){
                 return "./rain.png"
 
             case Conditions==="Rain, Partially cloudy":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 || 
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12 || 
                 WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./PartialRainNight.png"
                 else
@@ -144,7 +155,7 @@ function WeatherIcon(Conditions,WeeklyHour){
        
         switch(true){
             case Conditions==="Clear":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 || Hour==12 ||
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 || Hour==12 ||
                  WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./sun.png"
                 else
@@ -152,15 +163,15 @@ function WeatherIcon(Conditions,WeeklyHour){
                 
 
             case Conditions==="Partially cloudy":
-                if((Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12  ||
-                 WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12))
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||Hour==12  ||
+                 WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                         return "./PartiallyCloudy.png"
                     else
                         return "./cloudy-night.png"
 
             case Conditions==="Overcast":
-                if((Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||  Hour==12 ||
-                  WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12))
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 ||  Hour==12 ||
+                  WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./overcast.png"
                 else
                     return "./OvercastNight.png"
@@ -169,7 +180,7 @@ function WeatherIcon(Conditions,WeeklyHour){
                 return "./rain.png"
 
             case Conditions==="Rain, Partially cloudy":
-                if(Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 || Hour==12 ||
+                if(Hour ==6|| Hour==7 || Hour==8 || Hour==9 || Hour==10 || Hour==11 || Hour==12 ||
                  WeeklyHour==7 || WeeklyHour==8 || WeeklyHour==9 || WeeklyHour==10 || WeeklyHour==11 || WeeklyHour==12)
                     return "./PartialRain.png"
                 else

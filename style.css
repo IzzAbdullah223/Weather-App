@@ -15,7 +15,7 @@ body{
 
     display: flex;
     flex-direction: column;
-    gap: 90px;
+    gap: 60px;
    
 }
 
@@ -30,7 +30,7 @@ body{
 }
 
 .HeaderContainer img{
-    width: 2%;
+    width: 40px;
     cursor: pointer;
     margin-right: 10px;
 }
@@ -229,11 +229,11 @@ margin-bottom: 65px;
     justify-content: center;
     font-size: 1rem;
     gap: 10px;  
-    margin-top: 700px;
+    margin-top: 650px;
 }
 
 .CopyRightContainer img{
-    width: 30px;
+    max-width: 30px;
 }
 
 
@@ -262,7 +262,7 @@ margin-bottom: 65px;
 .ErrorContainer{
     display: flex;
     flex-direction: column;
-    height: 65vh;
+    min-height: 65vh;
     align-items: center;
     justify-content: center;
     gap: 20px;
