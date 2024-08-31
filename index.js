@@ -140,7 +140,7 @@ function WeatherIcon(Conditions,WeeklyHour){
                 else
                     return "./overcast.png"
 
-            case Conditions==="Rain":
+            case Conditions==="Rain, Overcast":
                 return "./rain.png"
 
             case Conditions==="Rain, Partially cloudy":
