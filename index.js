@@ -36,7 +36,7 @@ SearchBTN.addEventListener("click", async ()=>{
     HourlyWeather(Data)
     }
     else{
-        CopyRightContainer.style.marginTop="0px"
+        CopyRightContainer.style.marginTop="20px"
         LoadingContainer.style.display="none"
         MiddleContainer.style.display="none"
         BottomContainer.style.display="none"
@@ -58,7 +58,7 @@ async function getWeatherData(City){
 
 function WeatherInfoLeft(Data){
     setTimeout(() => {
-        CopyRightContainer.style.marginTop="0px"
+        CopyRightContainer.style.marginTop="40px"
         MiddleContainer.style.display="";
         BottomContainer.style.display="";
         CopyRightContainer.style.display="";

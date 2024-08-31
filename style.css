@@ -14,7 +14,7 @@ body{
 .PageContainer{
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 70px;
    
 }
 
@@ -241,7 +241,7 @@ margin-bottom: 65px;
     justify-content: center;
     font-size: 1rem;
     gap: 10px;  
-    margin-top: 650px;
+    margin-top: 710px;
 }
 
 .CopyRightContainer img{
